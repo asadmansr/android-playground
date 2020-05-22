@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">Navigation App</string>
+    <string name="navigation_component">Navigation Component</string>
+    <string name="tutorial_text">A Informative Tutorial Screen</string>
+    <string name="text_continue">Continue</string>
+    <string name="get_started">Get Started</string>
+    <string name="submit">Submit</string>
+    <string name="login">Login</string>
+    <string name="sign_up">Sign up</string>
+
+    <string name="hint_email">Email</string>
+    <string name="hint_password">Password</string>
 </resources>
