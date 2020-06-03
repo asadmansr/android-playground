@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#6200EE</color>
-    <color name="colorPrimaryDark">#3700B3</color>
-    <color name="colorAccent">#03DAC5</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorBlack">#000000</color>
-    <color name="themeYellow">#FFDE03</color>
-    <color name="themeBlue">#0336FF</color>
+
     <color name="themePink">#FF0266</color>
+    <color name="themePinkDark">#C5003C</color>
+
+    <color name="themeBlueLight">#6F63FF</color>
+    <color name="themeBlue">#0336FF</color>
+    <color name="themeBlueDark">#0008CA</color>
+
+    <color name="themeYellowLight">#FFFF54</color>
+    <color name="themeYellow">#FFDE03</color>
+    <color name="themeYellowDark">#C7AD00</color>
 </resources>
