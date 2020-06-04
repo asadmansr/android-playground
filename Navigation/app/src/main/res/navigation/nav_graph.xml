@@ -12,6 +12,10 @@
         tools:layout="@layout/fragment_welcome" >
         <action
             android:id="@+id/action_welcomeFragment_to_tutorialFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait"
+            app:popEnterAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_right"
             app:destination="@id/tutorialFragment" />
     </fragment>
     <fragment
@@ -21,12 +25,26 @@
         tools:layout="@layout/fragment_tutorial" >
         <action
             android:id="@+id/action_tutorialFragment_to_logInFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait"
+            app:popEnterAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_right"
             app:destination="@id/logInFragment" />
         <action
             android:id="@+id/action_tutorialFragment_to_signUpFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait"
+            app:popEnterAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_right"
             app:destination="@id/signUpFragment" />
         <action
             android:id="@+id/action_tutorialFragment_to_dashboardFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait"
+            app:popEnterAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_right"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
@@ -36,6 +54,12 @@
         tools:layout="@layout/fragment_log_in" >
         <action
             android:id="@+id/action_logInFragment_to_dashboardFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait"
+            app:popEnterAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_right"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
@@ -45,6 +69,12 @@
         tools:layout="@layout/fragment_sign_up" >
         <action
             android:id="@+id/action_signUpFragment_to_dashboardFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait"
+            app:popEnterAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_right"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/dashboardFragment" />
     </fragment>
     <fragment
@@ -54,6 +84,12 @@
         tools:layout="@layout/fragment_dashboard" >
         <action
             android:id="@+id/action_dashboardFragment_to_tutorialFragment"
+            app:enterAnim="@anim/slide_left"
+            app:exitAnim="@anim/wait"
+            app:popEnterAnim="@anim/wait"
+            app:popExitAnim="@anim/slide_right"
+            app:popUpTo="@id/nav_graph"
+            app:popUpToInclusive="true"
             app:destination="@id/tutorialFragment" />
     </fragment>
 </navigation>
