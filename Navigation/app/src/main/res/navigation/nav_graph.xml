@@ -5,6 +5,8 @@
     android:id="@+id/nav_graph"
     app:startDestination="@id/welcomeFragment">
 
+    <include app:graph="@navigation/auth_graph" />
+
     <fragment
         android:id="@+id/welcomeFragment"
         android:name="com.asadmansr.navigationapp.onboarding.WelcomeFragment"
@@ -29,46 +31,16 @@
             app:exitAnim="@anim/wait"
             app:popEnterAnim="@anim/wait"
             app:popExitAnim="@anim/slide_right"
-            app:destination="@id/logInFragment" />
+            app:destination="@id/navigation" />
         <action
             android:id="@+id/action_tutorialFragment_to_signUpFragment"
             app:enterAnim="@anim/slide_left"
             app:exitAnim="@anim/wait"
             app:popEnterAnim="@anim/wait"
             app:popExitAnim="@anim/slide_right"
-            app:destination="@id/signUpFragment" />
+            app:destination="@id/navigation" />
         <action
             android:id="@+id/action_tutorialFragment_to_dashboardFragment"
-            app:enterAnim="@anim/slide_left"
-            app:exitAnim="@anim/wait"
-            app:popEnterAnim="@anim/wait"
-            app:popExitAnim="@anim/slide_right"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true"
-            app:destination="@id/dashboardFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/logInFragment"
-        android:name="com.asadmansr.navigationapp.authentication.LogInFragment"
-        android:label="fragment_log_in"
-        tools:layout="@layout/fragment_log_in" >
-        <action
-            android:id="@+id/action_logInFragment_to_dashboardFragment"
-            app:enterAnim="@anim/slide_left"
-            app:exitAnim="@anim/wait"
-            app:popEnterAnim="@anim/wait"
-            app:popExitAnim="@anim/slide_right"
-            app:popUpTo="@id/nav_graph"
-            app:popUpToInclusive="true"
-            app:destination="@id/dashboardFragment" />
-    </fragment>
-    <fragment
-        android:id="@+id/signUpFragment"
-        android:name="com.asadmansr.navigationapp.authentication.SignUpFragment"
-        android:label="fragment_sign_up"
-        tools:layout="@layout/fragment_sign_up" >
-        <action
-            android:id="@+id/action_signUpFragment_to_dashboardFragment"
             app:enterAnim="@anim/slide_left"
             app:exitAnim="@anim/wait"
             app:popEnterAnim="@anim/wait"

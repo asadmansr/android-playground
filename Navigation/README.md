@@ -9,7 +9,7 @@ This project contains a sample application using the Navigation component in And
 Navigation is defined as the flow that the user may navigate across, into and back from a different place within the application. With Android Jetpack, navigation becomes easier as well as handle much complex paths such as app bars and navigation drawer. 
 
 The navigation component consists of three key parts:
-- navigation graph: an xml resources containing all navigation-related information. They contain individual content area within your app called destination, as well as possible paths for a user to take.
+- `navigation graph`: an xml resources containing all navigation-related information. They contain individual content area within your app called destination, as well as possible paths for a user to take.
 - `NavHost`: an empty container that displays destination from your navigation graph.
 - `NavController`: an object that manages app navigation within NavHost. Orchestrates the swapping of destination content in the NavHost as users move throughout your app.
 
@@ -82,4 +82,15 @@ if (!navController.popBackStack()) {
 
 - You can also include `app:popUpToInclusive="true"` to indicate that the destination specified in `app:popUpTo` should also be removed from the back stack.
 
-### Reference
+
+### Nested Graphs
+By nesting, the main flow of your app's UI is easier to comprehend and manage. In addition, nested graphs are reusable. They provide a level of encapsulation - destination outside of the nested graph do not have direct access to any of the destinations within the nest graph.
+
+Instead they should navigate to the nested graph, where the internal logic can change without affecting the rest of the graph.
+
+- a series of destinations can be grouped into a nested graph within a parent navigation graph called root graph
+- Nested graphs are useful to organize and reuse section of your app's UI, such as a self-contained login flow
+- Select the UI that need to be grouped and click on Group into nested graph. A new navigation tag is created.
+- Now you can move those navigation into a different class
+- The new navigation must be then included in the root navigation by the include tag
+- Documentation state that action must open the graph (I have it same as the UIs)
