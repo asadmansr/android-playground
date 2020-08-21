@@ -1,7 +1,5 @@
 package com.asadmansr.convertingtokotlin
 
-import java.util.*
-
 /**
  * Because we need one instance of Repository class, we used the singleton pattern
  * in Java. With Kotlin, you can enforce this pattern at the compiler level by
@@ -15,10 +13,16 @@ import java.util.*
 
 object Repository {
     // immutable reference of a mutable list which is empty, but can add on stuff
-    private val users = mutableListOf<User>();
-    fun getUsers(): List<User>? {
-        return users
-    }
+
+    /**
+     * The private _users property becomes the backing property for the public
+     * users property. Outside the repository class, the _users list is not
+     * modifiable, as consumers of the class can access the list only through
+     * users.
+     */
+    private val _users = mutableListOf<User>()
+    val users: List<User>
+        get() = _users
 
     /**
      *  The non-null assertion operator (!!) converts any variable to a non-null
@@ -48,21 +52,28 @@ object Repository {
      * development faster and safer by expanding the capabilities of Java APIs.
      * One of them is the map function. This function returns a new list containing
      * the results of applying the given transform function to each element.
+     *
+     * commented due to extension
      */
+//    val formattedUserNames: List<String>
+//        get() {
+//            return _users.map { user ->
+//                if (user.lastName != null) {
+//                    if (user.firstName != null) {
+//                        "${user.firstName} ${user.lastName}"
+//                    } else {
+//                        user.lastName ?: "Unknown"
+//                    }
+//                } else {
+//                    user.firstName ?: "Unknown"
+//                }
+//            }
+//        }
     val formattedUserNames: List<String>
         get() {
-            return users.map {user ->
-                if (user.lastName != null) {
-                    if (user.firstName != null) {
-                        "${user.firstName} ${user.lastName}"
-                    } else {
-                        user.lastName ?: "Unknown"
-                    }
-                } else {
-                    user.firstName ?: "Unknown"
-                }
-            }
+            return _users.map { user -> user.userFormattedName }
         }
+
 
     /**
      * In java, we use the static keyword for fields or functions to say that they
@@ -97,8 +108,67 @@ object Repository {
         val user2 = User("John", null)
         val user3 = User("Anne", "Doe")
 
-        users.add(user1)
-        users.add(user2)
-        users.add(user3)
+        _users.apply {
+            add(user1)
+            add(user2)
+            add(user3)
+        }
+    }
+
+    /**
+     * To execute code only in the context of a specific object, without needing to
+     * access the object based on its name. Kotlin offers 5 scope function:
+     * let, apply, with, run and also.
+     * These functions make your code easier to read and more concise. All scope
+     * functions have a receiver (this), may have an argument (it) and may return
+     * a value.
+     *
+     * top-level initialization -> run
+     * null-check -> T?.let
+     * Chaining operations -> object configuration -> T.apply
+     * Chaining operations -> side-effect -> T.also
+     * Chaining operations -> map -> T.let
+     */
+}
+
+/**
+ * In kotlin, you can declare top-level functions without having a class. It also
+ * provides the ability to create extension functions. These are functions that
+ * extend a certain type but are declared outside of the type.
+ *
+ * To extend the functionality of a class, either because we don't own the class
+ * or because it's not open to inheritance, Kotlin created special declarations
+ * called extensions.
+ */
+
+// extension function
+fun User.getFormattedName(): String {
+    return if (lastName != null) {
+        if (firstName != null) {
+            "$firstName $lastName"
+        } else {
+            lastName ?: "Unknown"
+        }
+    } else {
+        firstName ?: "Unknown"
     }
 }
+
+// extension property
+val User.userFormattedName: String
+    get() {
+        return if (lastName != null) {
+            if (firstName != null) {
+                "$firstName $lastName"
+            } else {
+                lastName ?: "Unknown"
+            }
+        } else {
+            firstName ?: "Unknown"
+        }
+    }
+
+// usage:
+val user = User("Joe", "hi")
+val name = user.getFormattedName()
+val formattedName = user.userFormattedName
